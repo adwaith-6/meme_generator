@@ -1,4 +1,6 @@
 import React from "react"
+import { toPng } from "html-to-image"
+import download from "downloadjs"
 
 export default function Meme() {
     const [meme, setMeme] = React.useState({
@@ -34,6 +36,16 @@ export default function Meme() {
             [name]: value
         }))
     }
+
+    const node = document.getElementById("meme-download")
+
+    function downloadMeme() {
+        toPng(node)
+            .then(dataURL => {
+                download(dataURL, "meme.png")
+            })
+            .catch(() => console.log("Error"))
+    }
     
     return (
         <main >
@@ -61,12 +73,14 @@ export default function Meme() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            <div className="meme">
+            <div className="meme" id="meme-download" >
                 <img src={meme.randomImage} className="meme--image" />
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
-            <div className="download"><button className="download-button">Download</button></div>
+            <div className="download">
+                <button className="download-button" onClick={downloadMeme}>Download</button>
+                </div>
             
         </main>
     )

@@ -109,10 +109,11 @@ main {
 
 .download-button {
   margin: 1.3em;
-  padding: 0.3em 15em;
+  width: 80vh;
+  padding: 0.3em 0;
   font-family: "Karla", sans-serif;
   border-radius: 5px;
-  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  background: linear-gradient(90.41deg, #4e245c 1.14%, #a12ec7 100%);
   color: white;
   border: none;
   cursor: pointer;
